@@ -5,12 +5,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: dont-do-this
+      - uses: actions/checkout@v2
+      - uses: ngduc/vercel-deploy-action@master
         env:
           # ruleid: allowed-unsecure-commands
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-      - uses: actions/checkout@v2
-      - uses: ngduc/vercel-deploy-action@master
         with:
           vercel-cli: vercel # optional ("vercel" or "now")
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
